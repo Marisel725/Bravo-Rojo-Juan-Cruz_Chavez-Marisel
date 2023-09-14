@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Odontólogos</title>
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+  <link href="../css/docs.css" rel="stylesheet">
+  <script src="../js/color-modes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js" defer></script>
+  <script type="text/javascript" src="../js/turnos/getTurnos.js" defer></script>
+  <script type="text/javascript" src="../js/turnos/postTurno.js" defer></script>
+  <script type="text/javascript" src="../js/turnos/updateTurno.js" defer></script>
+  <script type="text/javascript" src="../js/turnos/deleteTurno.js" defer></script>
+  <script src="https://kit.fontawesome.com/fb802798e2.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+  <!--Nav bar-->
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"> <i class="fa-solid fa-tooth"></i> Clínica Dental</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="./odontologos.html">Gestión de Odontólogos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="./pacientes.html">Gestión de Pacientes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="./turnos.html">Gestión de Turnos</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+
+    <!--Section tabla de Odontologos-->
+    <section class="container pt-4" style="min-height: calc(100vh - 361.2px)">
+      <div class="d-flex justify-content-between flex-column align-items-center flex-xs-column flex-sm-row">
+        <h1 class="pt-3">Gestión de Turnos</h1>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="height: 37.6px;">
+          Agregar Turno
+        </button>
+      </div>
+
+
+      <!-- Modal New Turno-->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar Turno</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action method="POST" name="formularioTurno" id="formularioTurno">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="fecha" class="form-label">Fecha del turno</label>
+                  <input type="date" class="form-control" id="fecha" placeholder="Fecha">
+                </div>
+                <div class="mb-3">
+                  <label for="hora" class="form-label">Hora del turno</label>
+                  <input type="time" class="form-control" id="hora" placeholder="Hora del turno">
+                </div>
+                <div class="mb-3">
+                  <label for="id_paciente" class="form-label">Id paciente</label>
+                  <input type="number" class="form-control" id="id_paciente" placeholder="Id paciente">
+                </div>
+                <div class="mb-3">
+                  <label for="id_odontologo" class="form-label">Id odontologo</label>
+                  <input type="number" class="form-control" id="id_odontologo" placeholder="Id odontologo">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="div_pelicula_table">
+        <h2 class="pt-3">Listado de Turnos disponibles</h2>
+        <!--Contenedor de la tabla-->
+        <div class="row  table-responsive ">
+          <table id="odontologoTable" class="table table-striped  ">
+            <thead>
+              <tr>
+                <th>🗓️Id Turno</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>👪Id Paciente</th>
+                <th>Apellido</th>
+                <th>👨🏻‍⚕️🧑🏻‍⚕️Id Odontologo</th>
+                <th>Apellido</th>
+                <th>Opciones</th>
+              </tr>
+            </thead>
+            <tbody id="odontologoTableBody">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Modal update Turno -->
+      <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel2">Modificar Turno</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action method="PUT" name="formularioTurnoUpdate" id="formularioTurnoUpdate">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="idUpdate" class="form-label">id</label>
+                  <input type="text" class="form-control" id="idUpdate" placeholder="id" disabled>
+                </div>
+                <div class="mb-3">
+                  <label for="fecha" class="form-label">Fecha del turno</label>
+                  <input type="date" class="form-control" id="fechaUpdate" placeholder="Fecha">
+                </div>
+                <div class="mb-3">
+                  <label for="hora" class="form-label">Hora del turno</label>
+                  <input type="time" class="form-control" id="horaUpdate" placeholder="Hora del turno">
+                </div>
+                <div class="mb-3">
+                  <label for="id_paciente" class="form-label">Id paciente</label>
+                  <input type="number" class="form-control" id="id_pacienteUpdate" placeholder="Id paciente">
+                </div>
+                <div class="mb-3">
+                  <label for="id_odontolotoUpdate" class="form-label">Id odontologo</label>
+                  <input type="number" class="form-control" id="id_odontolotoUpdate" placeholder="Id odontologo">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id="response" style="display:none; margin:10px">
+      </div>
+      </div>
+      </div>
+    </section>
+
+  </main>
+  <footer class="bd-footer py-4 mt-4 bg-body-tertiary">
+    <div class="container py-4 px-4 px-md-3 text-body-secondary">
+      <div class="row">
+        <div class="mb-3">
+          <a class="d-inline-flex align-items-center mb-2 text-body-secondary text-decoration-none" href="/" aria-label="Bootstrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="d-block me-2" viewBox="0 0 118 94" role="img">
+              <title>Bootstrap</title>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path>
+            </svg>
+            <span class="fs-5">Clínica Dental Backend</span>
+          </a>
+          <ul class="list-unstyled small">
+            <li class="mb-2">Desarollado por Juan Cruz Bravo Rojo y Marisel Chavez .</li>
+            <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
+            <li class="mb-2">Currently v0.0.1</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

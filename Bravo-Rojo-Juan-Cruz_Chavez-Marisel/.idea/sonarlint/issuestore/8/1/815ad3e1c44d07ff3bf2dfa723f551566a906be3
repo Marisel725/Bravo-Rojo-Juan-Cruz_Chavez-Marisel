@@ -1,0 +1,30 @@
+
+M
+java:S2629)"7Use the built-in formatting to construct this argument.(â±¦Å
+M
+java:S26292"7Use the built-in formatting to construct this argument.(ôş°¨
+R
+java:S2629="7Use the built-in formatting to construct this argument.(È²½Áúÿÿÿÿ
+M
+java:S2629G"7Use the built-in formatting to construct this argument.(Õœ´í
+R
+java:S2629I"7Use the built-in formatting to construct this argument.(¥â™ÿÿÿÿÿ
+M
+java:S2629X"7Use the built-in formatting to construct this argument.(÷Ã–õ
+e	java:S116"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øúºw
+W
+java:S3457)"AFormat specifiers should be used instead of string concatenation.(â±¦Å
+W
+java:S34572"AFormat specifiers should be used instead of string concatenation.(ôş°¨
+\
+java:S3457="AFormat specifiers should be used instead of string concatenation.(È²½Áúÿÿÿÿ
+W
+java:S3457G"AFormat specifiers should be used instead of string concatenation.(Õœ´í
+\
+java:S3457I"AFormat specifiers should be used instead of string concatenation.(¥â™ÿÿÿÿÿ
+W
+java:S3457X"AFormat specifiers should be used instead of string concatenation.(÷Ã–õ
+Š
+java:S1128"oRemove this unused import 'com.backend.digitalhouse.clinicaodontologica.dto.salida.paciente.PacienteSalidaDto'.(ºÿü“ıÿÿÿÿ
+o
+java:S1128	"YRemove this unused import 'com.backend.digitalhouse.clinicaodontologica.entity.Paciente'.(¹È¡ª

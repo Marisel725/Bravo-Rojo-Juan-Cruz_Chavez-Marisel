@@ -1,0 +1,27 @@
+
+R
+java:S2629#"7Use the built-in formatting to construct this argument.(Ÿšî™úÿÿÿÿ
+R
+java:S2629."7Use the built-in formatting to construct this argument.(åé×õùÿÿÿÿ
+r
+java:S26299"\Invoke method(s) only conditionally. Use the built-in formatting to construct this argument.(”‹Ó³
+M
+java:S2629<"7Use the built-in formatting to construct this argument.(ˆÂá°
+Y
+java:S2629L"7Use the built-in formatting to construct this argument.(ÞÏÂóûÿÿÿÿ8Á¿·ß¨1
+L
+java:S2629Y"7Use the built-in formatting to construct this argument.(„öµK
+f	java:S116"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©ÎÃ
+\
+java:S3457#"AFormat specifiers should be used instead of string concatenation.(Ÿšî™úÿÿÿÿ
+\
+java:S3457."AFormat specifiers should be used instead of string concatenation.(åé×õùÿÿÿÿ
+W
+java:S34579"AFormat specifiers should be used instead of string concatenation.(”‹Ó³
+W
+java:S3457<"AFormat specifiers should be used instead of string concatenation.(ˆÂá°
+W	java:S125I"<This block of commented-out lines of code should be removed.(èÂÉl8ä¿·ß¨1
+c
+java:S3457L"AFormat specifiers should be used instead of string concatenation.(ÞÏÂóûÿÿÿÿ8ä¿·ß¨1
+V
+java:S3457Y"AFormat specifiers should be used instead of string concatenation.(„öµK
